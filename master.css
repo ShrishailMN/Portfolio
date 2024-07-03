@@ -4,7 +4,7 @@ body {
     display: flex;
     position: relative;
     justify-content: center;
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
 }
 
 #div1{
@@ -18,4 +18,56 @@ body {
     height: 45vw;
     width: 45vw;
     border-radius: 1%;
+}
+.top,.top1{
+    overflow: hidden; /* Hide overflowing content */
+    white-space: nowrap; /* Prevent text from wrapping */
+    animation: slideInAnimation 2s forwards; /* Apply animation */
+    animation-delay: 0.5s; /* Delay the animation */
+    opacity: 0; /* Initially hide the text */
+}
+@keyframes slideInAnimation {
+    from {
+        transform: translateY(-20%); /* Start off-screen to the left */
+        opacity: 0; /* Start with opacity 0 */
+    }
+    to {
+        transform: translateX(0); /* End at the original position */
+        opacity: 1; /* End with opacity 1 */
+    }
+}
+.bottom,.bottom1{
+    overflow: hidden; /* Hide overflowing content */
+    white-space: nowrap; /* Prevent text from wrapping */
+    animation: slidebottom 2s forwards; /* Apply animation */
+    animation-delay: 0.5s; /* Delay the animation */
+    opacity: 0; /* Initially hide the text */
+}
+@keyframes slidebottom {
+    from {
+        transform: translateY(20%); /* Start off-screen to the left */
+        opacity: 0; /* Start with opacity 0 */
+    }
+    to {
+        transform: translateX(0); /* End at the original position */
+        opacity: 1; /* End with opacity 1 */
+    }    
+}
+.left {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: slideleft 2s forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+@keyframes slideleft {
+    from {
+        transform: translateX(-20%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
