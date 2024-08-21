@@ -62,6 +62,16 @@ body {
             padding: 20px;
             text-align: center;
         }
-        .menu{
-            justify-content: center;
+        .menu a {
+            margin-right: 20px; /* Adjust the value as needed */
+        }
+        
+        .menu a:last-child {
+            margin-right: 0; /* Remove margin from the last item */
+        }
+        .social-media a{
+            margin-right: 20px;
+        }
+        .social-media a :last-child{
+            margin-right: 0;
         }
