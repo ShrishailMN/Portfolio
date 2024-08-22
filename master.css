@@ -2,7 +2,7 @@ body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
             background-color: #181818;
-            color: #fff;
+            color:white;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -74,4 +74,67 @@ body {
         }
         .social-media a :last-child{
             margin-right: 0;
+        }
+        .hamburger-menu {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            left: 15px; /* Position the hamburger menu on the left */
+            z-index: 1001; /* Ensure it appears above other elements */
+        }
+        
+        .hamburger-menu .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #ffffff;
+            margin: 4px 0;
+            transition: 0.4s;
+            border-radius: 20px;   
+        }
+        
+        /* Side menu styles */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Start off-screen on the left */
+            width: 200px;
+            height: 100%;
+            background-color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: 0.4s;
+            padding: 20px;
+            z-index: 1000;
+        }
+        
+        .side-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 15px 0;
+            transition: 0.3s;
+        }
+        
+        .side-menu a:hover {
+            color: #ffa500;
+        }
+        
+        /* Show the side menu when the class is toggled */
+        .show {
+            left: 0; /* Move the side menu into view from the left */
+        }
+        
+        /* Media Query for smaller screens */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+        
+            .hamburger-menu {
+                display: flex;
+            }
         }
