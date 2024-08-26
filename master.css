@@ -31,17 +31,14 @@ header {
 .side-menu.show {
     transform: translateX(0); /* Slide in from the left */
 }
-/* 
-.side-menu.show {
-    display: block;
-    transform: translateX(0); /* Slide menu in 
-} */
-
 .side-menu a {
     display: block;
     color: #fff;
     text-decoration: none;
     margin-bottom: 1rem;
+}
+.project{
+    margin-top: 30%;
 }
 
 .main-content {
@@ -68,7 +65,7 @@ header {
 footer {
     position: absolute;
     bottom: 0;
-    height: -20%;
+    height: 2%;
     width: 100%;
     background-color: #333;
     color: #fff;
@@ -76,11 +73,26 @@ footer {
     padding: 1rem;
 }
 
+.social-media {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-top: 1px; /* Adjust as needed for spacing */
+    /* margin-bottom: 30px; */
+}
+
 .social-media a {
     color: #fff;
     text-decoration: none;
     margin: 0 0.5rem;
+    transform: translateY(-5px); /* Move links slightly up */
+    transition: transform 0.3s ease; /* Smooth transition */
 }
+
+.social-media a:hover {
+    transform: translateY(-10px); /* Lift more on hover */
+}
+
 
 @media (max-width: 600px) {
     .main-content h1 {
@@ -93,18 +105,19 @@ footer {
 
 .hamburger-menu {
     position: fixed;
-    top: 20px;
+    top: 5px;
     left: 20px;
     cursor: pointer;
     z-index: 1001;
 }
 
 .hamburger-menu .bar {
-    width: 30px;
-    height: 3px;
-    background-color: #333;
+    width: 20px;
+    height: 2px;
+    background-color: #ffffff;
     margin: 5px 0;
     transition: 0.4s; /* Smooth transition for bars */
+    border-radius: 10px;
 }
 
 .hamburger-menu.clicked .bar:nth-child(1) {
@@ -117,4 +130,53 @@ footer {
 
 .hamburger-menu.clicked .bar:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -5px);
+}
+.name-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    font-size: 2.5rem;
+    height: 50px;
+}
+
+.first-name, .last-name {
+    position: absolute;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+.first-name {
+    left: 0;
+    animation-name: move-left;
+}
+
+.last-name {
+    right: 0;
+    animation-name: move-right;
+}
+
+@keyframes move-left {
+    0% {
+        left: 0;
+        opacity: 0;
+    }
+    100% {
+        left: 1%;
+        opacity: 1;
+        transform: translateX(100%);
+    }
+}
+
+@keyframes move-right {
+    0% {
+        right: 0;
+        opacity: 0;
+    }
+    100% {
+        right: 1%;
+        opacity: 1;
+        transform: translateX(-85%);
+    }
 }
