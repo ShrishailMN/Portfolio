@@ -6,37 +6,30 @@
     <title>Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="master.css">
-    <link  href="master.js">
     <script src="master.js"></script>
 </head>
 <body>
     <header>
-        <!-- <div class="menu">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </div> -->
         <div class="hamburger-menu" onclick="toggleMenu()">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-        <div class="side-menu" id="sideMenu">
-            <a href="#" class="project">Projects</a>
+        <nav class="menu" id="menu">
+            <a href="#">Projects</a>
             <a href="#">Resume</a>
             <a href="#">Skills</a>
             <a href="#">Blog</a>
             <a href="#">Contact</a>
-        </div>
+        </nav>
     </header>
     <div class="main-content">
-        <div class="name-container"><h1 class="first-name">Shrishail</h1> 
-            <h1 class="last-name">Nandargi</h1>
+        <div class="name-container">
+            <div class="subname"><h1 class="first-name">Nandargi</h1> 
+            <h1 class="last-name">Shrishail</h1></div>
         <p>Creative Designer and Developer</p></div>
     </div>
     <footer>
-        <!-- <p>I Develop & Create Digital Future.</p> -->
         <div class="social-media">
             <a href="#">LinkedIn</a>
             <a href="#">GitHub</a>
@@ -45,7 +38,7 @@
 
     <script>
         function toggleMenu() {
-            const menu = document.getElementById('sideMenu');
+            const menu = document.getElementById('menu');
             menu.classList.toggle('show');
         }
     </script>
