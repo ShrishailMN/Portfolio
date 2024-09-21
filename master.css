@@ -1,11 +1,10 @@
 /* Base Styles */
-html, body {
+body, html {
     margin: 0;
     padding: 0;
-    height: 100%; /* Ensure body takes full height */
-    overflow: hidden; /* Prevent scrolling */
+    overflow: hidden;
+    height: 100%;
     font-family: 'Poppins', sans-serif;
-    box-sizing: border-box;
 }
 
 header {
@@ -48,26 +47,23 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh; /* Full viewport height */
     text-align: center;
-    padding: 1rem;
-    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
-
 .name-container {
     position: relative;
     width: 100%;
-    max-width: 600px;
+    max-width: 90%; /* Dynamic width */
     text-align: center;
-    font-size: 2.5rem;
 }
-
 .subname {
     margin-bottom: 50px;
 }
-
 .first-name, .last-name {
     position: absolute;
+    font-size: 10vw; /* Scales with viewport width */
     animation-duration: 2s;
     animation-fill-mode: forwards;
     opacity: 0;
@@ -82,6 +78,10 @@ header {
     left: 0;
     animation-name: move-left;
 }
+p {
+    font-size: 2vw; /* Dynamic font size */
+    margin-top: 20px;
+}
 
 /* Keyframes for animations */
 @keyframes move-left {
@@ -90,7 +90,7 @@ header {
         opacity: 0;
     }
     100% {
-        left: 8.5%;
+        left: 23.5%;
         opacity: 1;
         transform: translateX(100%);
     }
@@ -102,7 +102,7 @@ header {
         opacity: 0;
     }
     100% {
-        right: 8.5%;
+        right: 23.5%;
         opacity: 1;
         transform: translateX(-85%);
     }
@@ -152,6 +152,10 @@ footer .social-media a {
     .name-container h1 {
         font-size: 1.8rem; /* Smaller size for mobile */
     }
+    p {
+        font-size: 4vw; /* Dynamic font size */
+    }
+    
 
     .first-name, .last-name {
         animation-duration: 2s;
@@ -164,7 +168,7 @@ footer .social-media a {
             opacity: 0;
         }
         100% {
-            left: 15%;
+            left: -23.5%;
             opacity: 1;
             transform: translateX(100%);
         }
@@ -176,7 +180,7 @@ footer .social-media a {
             opacity: 0;
         }
         100% {
-            right: 15%;
+            right: -23.5%;
             opacity: 1;
             transform: translateX(-100%);
         }
