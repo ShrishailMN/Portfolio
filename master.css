@@ -1,155 +1,68 @@
-* {
+/* Base Styles */
+html, body {
     margin: 0;
     padding: 0;
+    height: 100%; /* Ensure body takes full height */
+    overflow: hidden; /* Prevent scrolling */
+    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
-    font-family: 'Poppins';
 }
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+}
+
 .menu {
     display: flex;
-    justify-content: center; /* Center the links horizontally */
-    gap: 20px; /* Space between the links */
-    padding: 20px 0;
-    background-color: #333; /* Background color of the navbar */
-    position: fixed; /* Keep the navbar at the top when scrolling */
-    top: 0;
-    left: 0;
-    width: 100%; /* Full width */
-    z-index: 1000; /* Make sure the navbar is on top */
-    transition: all 0.3s ease-in-out;
+    gap: 20px;
 }
 
 .menu a {
+    color: white;
     text-decoration: none;
-    color: white; /* Text color of the links */
+    font-size: 1rem;
     font-weight: 400;
-    padding: 10px;
-    transition: color 0.3s ease;
-}
-.menu a:hover {
-    color: #ff6347; /* Hover color for the links */
 }
 
 .hamburger-menu {
-    display: none; /* Initially hidden for large screens */
-    position: absolute;
-    top: 25px;
-    right: 20px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
     cursor: pointer;
 }
 
-.hamburger-menu .bar {
+.bar {
     width: 25px;
     height: 3px;
-    background-color: rgb(0, 0, 0);
-    margin: 5px 0;
-    transition: 0.4s;
-}
-.main-content {
-    margin-top: 80px; /* Adjust this based on the height of the navbar */
-}
-footer {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
-footer .social-media a {
-    margin: 0 15px;
-    color: #ffffff;
-    text-decoration: none;
-}
-footer .social-media a:hover {
-    color: #000000;
+    background-color: white;
 }
 
+/* Main content styling */
 .main-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 80px); 
-    padding: 1rem;
+    min-height: 100vh;
     text-align: center;
+    padding: 1rem;
     box-sizing: border-box;
 }
 
-.main-content h1 {
-    font-size: 2rem;
-    margin: 0;
-}
-
-.main-content p {
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
-}
-
-footer {
-    position: absolute;
-    bottom: 0;
-    height: 2%;
-    width: 100%;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-}
-
-.social-media {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    margin-top: 1px; 
-    
-}
-
-.social-media a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 0.5rem;
-    transform: translateY(-5px); 
-    transition: transform 0.3s ease; 
-}
-
-.social-media a:hover {
-    transform: translateY(-10px); 
-}
-
-
-@media (max-width: 768px) {
-    /* Stack the menu vertically */
-    .menu {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        background-color: #333;
-        position: absolute;
-        top: 70px; /* Below the header */
-        right: 0;
-        width: 100%;
-    }
-
-    .menu.show {
-        display: flex; /* Show the menu when toggle is clicked */
-    }
-
-    /* Show hamburger menu for mobile */
-    .hamburger-menu {
-        display: block;
-    }
-
-    /* Add some spacing to the content when menu is open */
-    .main-content {
-        margin-top: 100px;
-    }
-}
 .name-container {
     position: relative;
     width: 100%;
     max-width: 600px;
     text-align: center;
     font-size: 2.5rem;
-    height: 50px;
 }
-.subname{
+
+.subname {
     margin-bottom: 50px;
 }
 
@@ -170,6 +83,7 @@ footer {
     animation-name: move-left;
 }
 
+/* Keyframes for animations */
 @keyframes move-left {
     0% {
         left: 0;
@@ -191,5 +105,134 @@ footer {
         right: 8.5%;
         opacity: 1;
         transform: translateX(-85%);
+    }
+}
+
+/* Footer Styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+    text-align: center;
+}
+
+footer .social-media {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer .social-media a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: #333;
+        width: 100%;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .name-container h1 {
+        font-size: 1.8rem; /* Smaller size for mobile */
+    }
+
+    .first-name, .last-name {
+        animation-duration: 2s;
+        font-size: 1.8rem;
+    }
+
+    @keyframes move-left {
+        0% {
+            left: 0;
+            opacity: 0;
+        }
+        100% {
+            left: 15%;
+            opacity: 1;
+            transform: translateX(100%);
+        }
+    }
+
+    @keyframes move-right {
+        0% {
+            right: 0;
+            opacity: 0;
+        }
+        100% {
+            right: 15%;
+            opacity: 1;
+            transform: translateX(-100%);
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .menu a {
+        font-size: 1rem;
+    }
+
+    .name-container h1 {
+        font-size: 2.2rem;
+    }
+
+    .first-name, .last-name {
+        animation-duration: 2s;
+        font-size: 2.2rem;
+    }
+
+    @keyframes move-left {
+        0% {
+            left: 0;
+            opacity: 0;
+        }
+        100% {
+            left: 10%;
+            opacity: 1;
+            transform: translateX(100%);
+        }
+    }
+
+    @keyframes move-right {
+        0% {
+            right: 0;
+            opacity: 0;
+        }
+        100% {
+            right: 10%;
+            opacity: 1;
+            transform: translateX(-100%);
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .menu a {
+        font-size: 1.2rem;
+    }
+
+    .name-container h1 {
+        font-size: 2.5rem;
+    }
+
+    .first-name, .last-name {
+        animation-duration: 2s;
+        font-size: 2.5rem;
     }
 }
