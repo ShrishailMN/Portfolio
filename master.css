@@ -13,6 +13,9 @@ body {
     background-color: #000;
     color: #fff;
     overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Background Glow */
@@ -389,4 +392,108 @@ footer {
     .skill-name {
         font-size: 0.9rem;
     }
+}
+/* Additional Responsive Styles */
+
+/* Ensure the body takes up full viewport height */
+
+/* Make main content area flexible */
+.main-content {
+    
+}
+
+/* Adjust section padding and height */
+section {
+    min-height: auto;
+    padding: 60px 20px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    /* Adjust main content for smaller screens */
+    .main-content {
+        padding-top: 80px; /* Account for fixed header */
+    }
+
+    /* Adjust heading sizes for smaller screens */
+    .name-container h1 {
+        font-size: 2.5rem;
+    }
+
+    .name-container p {
+        font-size: 1rem;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    section p {
+        font-size: 1rem;
+    }
+
+    /* Adjust skills container for smaller screens */
+    .skills-container {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .skill-item {
+        padding: 10px;
+    }
+
+    .skill-icon {
+        font-size: 1.5rem;
+    }
+
+    .skill-name {
+        font-size: 0.8rem;
+    }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+    .name-container h1 {
+        font-size: 2rem;
+    }
+
+    .name-container p {
+        font-size: 0.9rem;
+    }
+
+    section h2 {
+        font-size: 1.75rem;
+    }
+
+    section p {
+        font-size: 0.9rem;
+    }
+
+    /* Adjust skills container for very small screens */
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Ensure content doesn't overlap with fixed footer */
+body {
+    padding-bottom: 60px; /* Adjust this value based on your footer height */
+}
+
+/* Improve navbar responsiveness */
+@media (max-width: 768px) {
+    .nav-links {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        padding: 10px;
+        display: block;
+    }
+}
+
+/* Ensure images and embedded content are responsive */
+img, iframe, video, embed, object {
+    max-width: 100%;
+    height: auto;
 }
