@@ -6,48 +6,181 @@
     <title>Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="master.css">
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
     <div class="background"></div>
     <div class="glow"></div>
+
+    <!-- Updated Navbar -->
     <header>
         <nav>
-            <div class="hamburger" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+            <a href="#home" class="logo">SN</a>
             <div class="nav-links">
-                <a href="#">Projects</a>
-                <a href="#">Resume</a>
-                <a href="#">Skills</a>
-                <a href="#">Blog</a>
-                <a href="#">Contact</a>
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#resume">Resume</a>
+                <a href="#skills">Skills</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
             </div>
         </nav>
     </header>
-    <div class="main-content">
+
+    <!-- Main content with name -->
+    <div class="main-content" id="home">
         <div class="name-container">
             <h1>Shrishail Nandargi</h1>
             <p>Creative Designer and Developer</p>
         </div>
-        <div id="animated-diagram"></div>
     </div>
+
+    <!-- Sections for smooth scrolling and fade-in effect -->
+    <section id="projects">
+        <div>
+            <h2>Projects</h2>
+            <p>Check out my amazing projects that showcase my skills and creativity.</p>
+        </div>
+    </section>
+
+    <section id="resume">
+        <div>
+            <h2>Resume</h2>
+            <p>Explore my professional journey and accomplishments.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div>
+            <h2>Skills</h2>
+            <p>Discover the wide range of tools and technologies I'm proficient in.</p><br>
+    <!-- Updated Skills Section -->
+        <div class="skills-container">
+            <div class="skill-item">
+                <div class="skill-icon">💻</div>
+                <div class="skill-name">HTML/CSS</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🚀</div>
+                <div class="skill-name">JavaScript</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon"><i class="fas fa-code-branch"></i></div> <!-- For C++ -->
+                <div class="skill-name">C/C++</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🐍</div>
+                <div class="skill-name">Python</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 75%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">📊</i></div>
+                <div class="skill-name">Power BI</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">📱</div>
+                <div class="skill-name">Responsive Design</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 90%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="blog">
+        <div>
+            <h2>Blog</h2>
+            <p>Read my latest thoughts and insights on design and development.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div>
+            <h2>Contact</h2>
+            <p>Get in touch with me for collaborations or opportunities.</p>
+        </div>
+    </section>
+
     <footer>
         <div class="social-media">
             <a href="#">LinkedIn</a>
             <a href="#">GitHub</a>
         </div>
     </footer>
-    
+
+    <!-- JavaScript for Navbar and Section Effects -->
     <script>
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
+        const header = document.querySelector('header');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links a');
+
+        // Smooth scroll function
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger menu toggle
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+            links.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in effect
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
