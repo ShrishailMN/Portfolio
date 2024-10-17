@@ -205,41 +205,39 @@ max-width: 400px; /* Prevent posters from becoming too wide */
 margin: 15px 0; /* Add vertical spacing between posters */
 }
 
-/* General Poster Styles */
+/* Flexbox Carousel for Posters */
+.carousel {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping so that the posters stay in a row */
+    overflow-x: auto; /* Allows horizontal scrolling */
+    scroll-behavior: smooth; /* Smooth scrolling for a better user experience */
+    -webkit-overflow-scrolling: touch; /* For better touch experience on mobile */
+}
+
+.poster {
+    min-width: 200px; /* Adjust width to fit mobile screen better */
+    margin: 0 10px; /* Adds space between posters */
+    flex-shrink: 0; /* Prevents shrinking */
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .poster {
+        min-width: 150px; /* Adjust the size for smaller mobile screens */
+    }
+
+    .carousel {
+        padding: 10px; /* Padding for better spacing on mobile */
+    }
+}
+
+/* General Poster Image Styling */
 .poster img {
     width: 100%;
     height: auto;
-    object-fit: cover;
+    object-fit: cover; /* Ensures the image fits nicely within the poster */
     border-radius: 8px;
 }
-
-/* Ensure the carousel remains horizontal on smaller screens */
-.carousel {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    white-space: nowrap; /* Keeps the posters in a single row */
-}
-
-/* Mobile view: Adjust spacing and make sure the posters are properly sized */
-@media (max-width: 768px) {
-    .carousel {
-        overflow-x: scroll; /* Ensures users can scroll horizontally */
-        padding: 10px; /* Adds a little padding for better touch experience */
-    }
-
-    .poster {
-        flex: 0 0 80%; /* Makes each poster take up 80% of the screen width */
-        margin-right: 10px; /* Adds space between posters */
-    }
-
-    .poster img {
-        width: 100%;
-        height: auto;
-        object-fit: contain; /* Ensures the full image is visible on mobile */
-    }
-}
-
 
 /* Customize scrollbar for mobile */
 .carousel-container::-webkit-scrollbar {
