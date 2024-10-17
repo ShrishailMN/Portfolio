@@ -205,12 +205,32 @@ max-width: 400px; /* Prevent posters from becoming too wide */
 margin: 15px 0; /* Add vertical spacing between posters */
 }
 
+/* For larger screens */
 .poster img {
-width: 100%;
-height: auto;
-aspect-ratio: 1/1;
-object-fit: cover;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
 }
+
+/* For mobile view */
+@media (max-width: 768px) {
+    .poster img {
+        width: 100%;
+        height: auto;
+        object-fit: contain; /* Ensures the entire poster is visible */
+        max-width: 100%; /* Makes sure images don’t overflow */
+    }
+
+    .poster {
+        margin-bottom: 20px; /* Adds spacing between posters on mobile */
+    }
+
+    .carousel {
+        flex-direction: column; /* Stacks the posters vertically on smaller screens */
+    }
+}
+
 
 /* Customize scrollbar for mobile */
 .carousel-container::-webkit-scrollbar {
