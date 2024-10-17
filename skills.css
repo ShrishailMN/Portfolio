@@ -205,38 +205,11 @@ max-width: 400px; /* Prevent posters from becoming too wide */
 margin: 15px 0; /* Add vertical spacing between posters */
 }
 
-/* Flexbox Carousel for Posters */
-.carousel {
-    display: flex;
-    flex-wrap: nowrap; /* Prevent wrapping so that the posters stay in a row */
-    overflow-x: auto; /* Allows horizontal scrolling */
-    scroll-behavior: smooth; /* Smooth scrolling for a better user experience */
-    -webkit-overflow-scrolling: touch; /* For better touch experience on mobile */
-}
-
-.poster {
-    min-width: 200px; /* Adjust width to fit mobile screen better */
-    margin: 0 10px; /* Adds space between posters */
-    flex-shrink: 0; /* Prevents shrinking */
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-    .poster {
-        min-width: 150px; /* Adjust the size for smaller mobile screens */
-    }
-
-    .carousel {
-        padding: 10px; /* Padding for better spacing on mobile */
-    }
-}
-
-/* General Poster Image Styling */
 .poster img {
-    width: 100%;
-    height: auto;
-    object-fit: cover; /* Ensures the image fits nicely within the poster */
-    border-radius: 8px;
+width: 100%;
+height: auto;
+aspect-ratio: 1/1;
+object-fit: cover;
 }
 
 /* Customize scrollbar for mobile */
