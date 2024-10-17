@@ -1,0 +1,310 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.neon-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 50% 50%, rgba(76, 0, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 40%);
+    z-index: -1;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #00ffff;
+    text-decoration: none;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+}
+
+main {
+    padding-top: 80px;
+}
+
+#poster-showcase {
+    text-align: center;
+    padding: 2rem 0;
+    min-height: calc(100vh - 140px);
+}
+
+h1 {
+    color: #00ffff;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+}
+
+.carousel-container {
+    width: 100%;
+    position: relative;
+    padding: 20px 0;
+    max-height: calc(100vh - 200px);
+}
+
+.carousel {
+    display: flex;
+    padding: 0 2rem;
+    transition: transform 0.5s ease;
+    margin: 0 auto;
+}
+
+.poster {
+    flex: 0 0 300px;
+    margin: 1rem;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+}
+
+.poster:hover {
+    transform: scale(1.05);
+}
+
+.poster-actions {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.poster:hover .poster-actions {
+    opacity: 1;
+}
+
+.action-btn {
+    background-color: #00ffff;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: transform 0.2s ease;
+}
+
+.action-btn:hover {
+    transform: scale(1.1);
+}
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Desktop View */
+@media (min-width: 769px) {
+    .carousel-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .carousel-container::-webkit-scrollbar {
+        height: 10px;
+    }
+
+    .carousel-container::-webkit-scrollbar-track {
+        background: rgba(0, 255, 255, 0.1);
+        border-radius: 5px;
+    }
+
+    .carousel-container::-webkit-scrollbar-thumb {
+        background: #00ffff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px #00ffff;
+    }
+
+    .carousel {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        width: max-content;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+.carousel-container {
+height: calc(100vh - 200px);
+overflow-y: auto;
+overflow-x: hidden;
+scroll-behavior: smooth;
+padding: 0 15px; /* Add padding to container */
+}
+
+.carousel {
+display: flex;
+flex-direction: column;
+align-items: center; /* Center the posters */
+width: 100%;
+padding: 10px 0; /* Remove horizontal padding, keep vertical */
+}
+
+.poster {
+flex: 0 0 auto;
+width: 80%; /* Reduce width to create margins */
+max-width: 400px; /* Prevent posters from becoming too wide */
+margin: 15px 0; /* Add vertical spacing between posters */
+}
+
+.poster img {
+width: 100%;
+height: auto;
+aspect-ratio: 1/1;
+object-fit: cover;
+}
+
+/* Customize scrollbar for mobile */
+.carousel-container::-webkit-scrollbar {
+width: 5px;
+}
+
+.carousel-container::-webkit-scrollbar-track {
+background: rgba(0, 255, 255, 0.1);
+margin: 5px 0; /* Add some space around scrollbar */
+}
+
+.carousel-container::-webkit-scrollbar-thumb {
+background: #00ffff;
+border-radius: 5px;
+}
+
+/* Ensure poster actions are properly centered */
+.poster-actions {
+width: 100%;
+left: 0;
+right: 0;
+}
+}
+
+/* Add breakpoint for very small screens */
+@media (max-width: 380px) {
+.poster {
+width: 95%; /* Slightly wider on very small screens */
+}
+
+.carousel-container {
+padding: 0 5px; /* Slightly smaller padding */
+}
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1001;
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 800px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    color: #fff;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+#modal-img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.modal-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.modal-btn {
+    background: #00ffff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.modal-btn:hover {
+    transform: scale(1.1);
+}
+footer{
+    margin-bottom: 2rem;
+    
+}

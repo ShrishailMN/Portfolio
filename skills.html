@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shrishail Nandargi - Poster Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="skills.css">
+</head>
+<body>
+    <div class="neon-bg"></div>
+    <header>
+        <nav>
+            <a href="#" class="logo">SN</a>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#poster-showcase">Posters</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="poster-showcase">
+            <h1>Creative Poster Showcase</h1>
+            <div class="carousel-container">
+                <div class="carousel" id="carousel">
+                    <div class="poster">
+                        <img src="images/fast1.png" alt="Poster 1">
+                        <div class="poster-actions">
+                            <button class="action-btn download-btn">Download</button>
+                            <button class="action-btn share-btn">Share</button>
+                        </div>
+                    </div>
+                    <div class="poster">
+                        <img src="images/fast2.png" alt="Poster 2">
+                        <div class="poster-actions">
+                            <button class="action-btn download-btn">Download</button>
+                            <button class="action-btn share-btn">Share</button>
+                        </div>
+                    </div>
+                    <div class="poster">
+                        <img src="images/fast3.png" alt="Poster 3">
+                        <div class="poster-actions">
+                            <button class="action-btn download-btn">Download</button>
+                            <button class="action-btn share-btn">Share</button>
+                        </div>
+                    </div>
+                    <div class="poster">
+                        <img src="images/fast4.png" alt="Poster 4">
+                        <div class="poster-actions">
+                            <button class="action-btn download-btn">Download</button>
+                            <button class="action-btn share-btn">Share</button>
+                        </div>
+                    </div>
+                    <div class="poster">
+                        <img src="images/fast5.png" alt="Poster 5">
+                        <div class="poster-actions">
+                            <button class="action-btn download-btn">Download</button>
+                            <button class="action-btn share-btn">Share</button>
+                        </div>
+                    </div>
+                    <div class="poster">
+                        <img src="images/fast6.png" alt="Poster 6">
+                        <div class="poster-actions">
+                            <button class="action-btn download-btn">Download</button>
+                            <button class="action-btn share-btn">Share</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Shrishail Nandargi. All rights reserved.</p>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modal-img" src="" alt="Full size poster">
+            <div class="modal-actions">
+                <button class="modal-btn" id="modal-download">Download</button>
+                <button class="modal-btn" id="modal-share">Share</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.querySelector('.carousel');
+            const carouselContainer = document.querySelector('.carousel-container');
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-img');
+            const closeBtn = document.querySelector('.close');
+            const isMobile = window.innerWidth <= 768;
+            let scrollInterval;
+
+            // Auto-scroll function for desktop
+            function startAutoScroll() {
+                if (!isMobile) {
+                    const scrollAmount = 1; // Adjust scroll speed
+                    let scrollPos = 0;
+
+                    scrollInterval = setInterval(() => {
+                        scrollPos += scrollAmount;
+                        if (scrollPos >= carouselContainer.scrollWidth) {
+                            scrollPos = 0;
+                        }
+                        carouselContainer.scrollLeft = scrollPos;
+                    }, 30);
+                }
+            }
+
+            // Handle scroll pause/resume on hover for desktop
+            if (!isMobile) {
+                carouselContainer.addEventListener('mouseenter', () => {
+                    clearInterval(scrollInterval);
+                });
+
+                carouselContainer.addEventListener('mouseleave', () => {
+                    startAutoScroll();
+                });
+
+                startAutoScroll();
+            }
+
+            // Handle downloads
+            function downloadImage(imgSrc) {
+                const link = document.createElement('a');
+                link.href = imgSrc;
+                link.download = 'poster.jpg';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+
+            // Handle sharing
+            async function shareImage(imgSrc, title) {
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: title || 'Check out this poster!',
+                            text: 'Found this amazing poster in the showcase.',
+                            url: imgSrc
+                        });
+                    } catch (err) {
+                        console.error('Error sharing:', err);
+                    }
+                } else {
+                    // Fallback for browsers that don't support Web Share API
+                    const dummyInput = document.createElement('input');
+                    document.body.appendChild(dummyInput);
+                    dummyInput.value = window.location.href;
+                    dummyInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(dummyInput);
+                    alert('Link copied to clipboard!');
+                }
+            }
+
+            // Handle poster clicks and actions
+            document.querySelectorAll('.poster').forEach(poster => {
+                const img = poster.querySelector('img');
+                const downloadBtn = poster.querySelector('.download-btn');
+                const shareBtn = poster.querySelector('.share-btn');
+
+                img.addEventListener('click', () => {
+                    modal.style.display = 'block';
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                });
+
+                downloadBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    downloadImage(img.src);
+                });
+
+                shareBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    shareImage(img.src, img.alt);
+                });
+            });
+
+            // Modal actions
+            document.getElementById('modal-download').addEventListener('click', () => {
+                downloadImage(modalImg.src);
+            });
+
+            document.getElementById('modal-share').addEventListener('click', () => {
+                shareImage(modalImg.src, modalImg.alt);
+            });
+
+            // Close modal
+            closeBtn.onclick = () => modal.style.display = 'none';
+            window.onclick = (e) => {
+                if (e.target == modal) modal.style.display = 'none';
+            };
+        });
+    </script>
+</body>
+</html>
