@@ -170,6 +170,9 @@ section p {
 }
 
 footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -245,7 +248,7 @@ footer {
     .nav-active {
         transform: translateX(0%);
     }
-
+    
     @keyframes navLinkFade {
         from {
             opacity: 0;
@@ -294,6 +297,7 @@ footer {
     section p {
         font-size: 1rem;
     }
+    
 }
 
 /* Keyframes for glowing text */
@@ -398,9 +402,7 @@ footer {
 /* Ensure the body takes up full viewport height */
 
 /* Make main content area flexible */
-.main-content {
-    
-}
+
 
 /* Adjust section padding and height */
 section {
@@ -496,4 +498,20 @@ body {
 img, iframe, video, embed, object {
     max-width: 100%;
     height: auto;
+}
+.blogp{
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid #00ffff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+a{
+    text-decoration: none;
 }
