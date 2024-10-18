@@ -24,17 +24,26 @@ body {
 }
 
 header {
-    background-color: rgba(0, 0, 0, 0.8);
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+header.scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 2px 10px rgba(0, 255, 255, 0.3);
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
+    padding: 20px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo {
@@ -42,24 +51,55 @@ nav {
     font-weight: 700;
     color: #00ffff;
     text-decoration: none;
-    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
 }
 
 .nav-links {
     display: flex;
-    align-items: center;
+    gap: 30px;
 }
 
 .nav-links a {
-    color: #fff;
     text-decoration: none;
-    margin-left: 1rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
     transition: color 0.3s ease;
+    position: relative;
 }
 
 .nav-links a:hover {
     color: #00ffff;
-    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #00ffff;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-links a:hover::after {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+    transition: all 0.3s ease;
 }
 
 main {
@@ -304,10 +344,210 @@ padding: 0 5px; /* Slightly smaller padding */
 .modal-btn:hover {
     transform: scale(1.1);
 }
-footer{
-    margin-bottom: 2rem;
-    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
-a{
+
+/* Header/Logo Section */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 2px 10px rgba(0, 255, 255, 0.3);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #00ffff;
     text-decoration: none;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+/* Personal Growth Section */
+.personal-growth {
+    min-height: 100vh;
+    background-color: #000;
+    color: #fff;
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+    padding-top: 120px; /* Added to account for fixed header */
+    padding-bottom: 80px; /* Added to account for fixed footer */
+}
+
+.glow-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.1), transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #00ffff;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.growth-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.growth-card {
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid #00ffff;
+    border-radius: 10px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.5s ease-out backwards;
+}
+
+/* Footer Section */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 -2px 10px rgba(0, 255, 255, 0.3);
+    padding: 15px 0;
+    z-index: 1000;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-media a {
+    text-decoration: none;
+    color: #00ffff;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.social-media a:hover {
+    color: #fff;
+}
+
+.social-media a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #00ffff;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+.social-media a:hover::after {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+/* Animations */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(0, 255, 255, 1), 0 0 30px rgba(0, 255, 255, 0.7);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .personal-growth {
+        padding: 80px 15px;
+        padding-top: 100px; /* Adjusted for fixed header */
+        padding-bottom: 70px; /* Adjusted for fixed footer */
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .growth-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .social-media {
+        gap: 15px;
+    }
+
+    .social-media a {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .social-media {
+        gap: 10px;
+    }
 }
