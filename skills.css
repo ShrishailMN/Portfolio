@@ -209,7 +209,7 @@ footer{
     .carousel-container::-webkit-scrollbar-thumb {
         background: #00ffff;
         border-radius: 5px;
-        box-shadow: 0 0 10px #00ffff;
+        /* box-shadow: 0 0 10px #00ffff; */
     }
 
     .carousel {
