@@ -238,8 +238,8 @@
                     <div class="skill-name">CodeChef</div></a>
                 </div></a>
                 <div class="skill-item">
-                    <a href="mailto:nandargishri@gmail.com" target="_blank">
-                        <div class="skill-icon" style="cursor: pointer;">📧</div> <!-- For Email -->
+                    <a href="mailto:nandargishri@gmail.com" onclick="event.preventDefault(); openEmail();">
+                        <div class="skill-icon">📧</div> <!-- For Email -->
                         <div class="skill-name">Email</div>
                     </a>
                 </div>
@@ -322,7 +322,17 @@
       });
   });
 }
+ function openEmail() {
+        const email = "nandargishri@gmail.com";
+        const subject = "Subject Text"; // Optional: Customize subject
+        const body = "Body Text"; // Optional: Customize body
 
+        // Create a mailto link with optional parameters (subject, body)
+        const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        // Open the email client
+        window.location.href = mailtoLink;
+    }
     </script>
 </body>
 </html>
